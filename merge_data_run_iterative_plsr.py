@@ -25,12 +25,12 @@ def main():
     parser.add_argument('-spectral_smoothing',
                         choices=['sg', 'none', '2band', '3band'], type=str, default='none')
     parser.add_argument('-n_test_folds', default=10, type=int)
-    parser.add_argument('-n_folds_to_run', default=1, type=int)
+    parser.add_argument('-n_folds_to_run', default=10, type=int)
 
     parser.add_argument('-ndvi_min', default=0.5, type=float)
 
     parser.add_argument('-plsr_ensemble_code_dir',
-                        default='/Users/kdchadwick/Documents/Github/crown_based_ensembling', type=str)
+                        default='/Users/katiedenniston/Desktop/er18_metals_analysis/crown_based_ensembling', type=str)
 
     args = parser.parse_args()
     if args.brightness_normalize.lower() == 'true':
@@ -46,6 +46,7 @@ def main():
     logging.basicConfig(filename=os.path.join(args.output_directory, 'log_file.txt'), level='INFO')
 
     sys.path.append(args.plsr_ensemble_code_dir)
+    # from east_river_trait_modeling \
     import read_settings_file
     settings_file = read_settings_file.settings(args.base_settings_file)
 
@@ -281,7 +282,7 @@ def main():
 
             os.chdir(fold_output_dir)
             cmd_str = 'python {} {}&'.format(os.path.join(
-                args.plsr_ensemble_code_dir, 'ensemble_plsr.py'), output_sf)
+                args.plsr_ensemble_code_dir, '../crown_based_ensembling/ensemble_plsr.py'), output_sf)
             logging.info('calling:\n{}'.format(cmd_str))
             subprocess.call(cmd_str, shell=True)
             os.chdir(starting_dir)

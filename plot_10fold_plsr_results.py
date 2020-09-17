@@ -32,19 +32,19 @@ def main():
 
     args = parser.parse_args()
 
-    chems = ['N_weight_percent', 'LMA_gm2', 'LWC_per',  'CN', 'C_weight_percent', 'd13C']
-    chems_names = ['Foliar N (%)', 'Leaf Mass per Area (g m$^2$)', 'Leaf Water (%)',
-                   'Foliar C:N Ratio','Foliar C (%)','$\delta$$^{13}$C']
+    chems = ['1C', 'Co', 'Cr', 'Cu', 'Mo', 'Ni', 'Sr', 'Zn']
+    chems_names = ['Foliar Cd (ppm)', 'Foliar Co (ppm)', 'Foliar Cr (ppm)', 'Foliar Cu (ppm)',
+                   'Foliar Mo (ppm)', 'Foliar Ni (ppm)', 'Foliar Sr (ppm)', 'Foliar Zn (ppm)']
 
     leaftype = ['needles', 'noneedles']
     plotting_colnames = ['SiteID', 'measured', 'modeled', 'calval']
 
-    fig = plt.figure(figsize=(19, 13))  # , constrained_layout=True)
-    grid = gridspec.GridSpec(2, 3, wspace=.3, hspace=.5)
+    fig = plt.figure(figsize=(24, 13))  # , constrained_layout=True)
+    grid = gridspec.GridSpec(2, 4, wspace=.3, hspace=.5)
 
-    r_i = [0, 0, 0, 1, 1, 1]
-    c_i = [0, 1, 2, 0, 1, 2]
-    round_val = [1, -1, 0, 0, 0, 0]
+    r_i = [0, 0, 0, 0, 1, 1, 1, 1]
+    c_i = [0, 1, 2, 3, 0, 1, 2, 3]
+    round_val = [1, 1, 1, 1, 1, 1, 1, 1]
     for _i in range(len(chems)):
 
         # get results for this chem

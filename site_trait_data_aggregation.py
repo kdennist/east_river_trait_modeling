@@ -13,6 +13,7 @@ lma_meadow = pd.read_csv('data/doi_lma/lma_meadow_area_samples.csv', na_values='
 lma_site = pd.read_csv('data/doi_lma/lma_site_samples.csv', na_values='NA')
 species = pd.read_csv('data/doi_sites/species_list.csv')
 cn = pd.read_csv('data/doi_cn/CN_Results_Foliar.csv')
+ms = pd.read_csv('../icpms/processed_data/icp_ms_processed.csv')
 
 # Use Bradley and T403 interchangeably
 lma_meadow['SamplingArea'].loc[lma_meadow['SamplingArea'] == 'T403'] = "BD"
@@ -141,8 +142,17 @@ site_trait_data = sites[['SampleSiteID', 'SampleSiteCode', 'Site_Veg', 'Needles'
 cn_merging = cn[['SampleSiteCode', 'd15N', 'd13C', 'N_weight_percent', 'C_weight_percent']]
 cn_merging['CN'] = ((cn_merging['C_weight_percent'] / 100) / 12.0107)/((cn_merging['N_weight_percent'] / 100) / 14.0067)
 
+ms['Element'] = ms['Element'].str.slice(2, 4)
+icp_merging = (ms.loc[ms['SampleID'].str.contains('-FO', na=False)])
+icp_merging = icp_merging[['Element', 'SampleSiteCode', 'Calc Value (mg/g)']]
+
+icp_merging = pd.pivot_table(icp_merging, index=['SampleSiteCode'], columns='Element', values='Calc Value (mg/g)')
+
+print(icp_merging)
+
 site_trait_data = pd.merge(site_trait_data, all_lma, on='SampleSiteCode', how='left')
 site_trait_data = pd.merge(site_trait_data, cn_merging, on='SampleSiteCode', how='left')
+site_trait_data = pd.merge(site_trait_data, icp_merging, on='SampleSiteCode', how='left')
 
 # export dataset
 site_trait_data.to_csv('data/site_trait_data.csv', index=False)
