@@ -30,7 +30,7 @@ def main():
     parser.add_argument('-ndvi_min', default=0.5, type=float)
 
     parser.add_argument('-plsr_ensemble_code_dir',
-                        default='/Users/katiedenniston/Desktop/er18_metals_analysis/crown_based_ensembling', type=str)
+                        default='/Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling', type=str)
 
     args = parser.parse_args()
     if args.brightness_normalize.lower() == 'true':
