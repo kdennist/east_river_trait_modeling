@@ -98,22 +98,23 @@ def main():
                                size=(CNwillows.shape[0],), p=fraction_sets)
     CalValC = np.random.choice(list(range(args.n_test_folds)),
                                size=(CNconifer.shape[0],), p=fraction_sets)
-    CalValB = np.random.choice(list(range(args.n_test_folds)),
-                               size=(CNbroadleaf.shape[0],), p=fraction_sets)
+    # CalValB = np.random.choice(list(range(args.n_test_folds)),
+    #                            size=(CNbroadleaf.shape[0],), p=fraction_sets)
 
     CNwillows['CalVal'] = CalValM
     CNconifer['CalVal'] = CalValC
-    CNbroadleaf['CalVal'] = CalValB
+    # CNbroadleaf['CalVal'] = CalValB
 
     # Merging chem data with the correct extraction data based on the
     conifers = pd.merge(CNconifer, extract, how='inner', right_on=['ID'], left_on=['SampleSiteID'])
     willows = pd.merge(CNwillows, extract, how='inner', right_on=['ID'], left_on=['SampleSiteID'])
-    broadleaf = pd.merge(CNbroadleaf, extract, how='inner',
-                         right_on=['ID'], left_on=['SampleSiteID'])
+    # broadleaf = pd.merge(CNbroadleaf, extract, how='inner',
+    #                      right_on=['ID'], left_on=['SampleSiteID'])
 
     # Concatenating data for different subset exports
-    noneedles = willows.append(broadleaf)
+    # noneedles = willows.append(broadleaf)
 
+    #FUNC#
     # first column of reflectance data
     rfdat = list(extract).index(settings_file.get_setting('band preface') + '1')
 
@@ -147,7 +148,7 @@ def main():
 
     spectra_sets = [conifer_spectra, noneedles_spectra]
     color_sets = ['royalblue', 'darkorange']
-
+    #FUNC#
     #####   Spectral smoothing #####
     if (args.spectral_smoothing == '2band' or args.spectral_smoothing == '3band'):
         average_interval = 2
@@ -186,7 +187,7 @@ def main():
             spectra = spectra_sets[_s]
             spectra = spectra / np.sqrt(np.nanmean(np.power(spectra, 2), axis=1))[:, np.newaxis]
             spectra_sets[_s] = spectra
-
+    #FUNC#
     ############### Rebuild dataframes for export  ##############
     export_dataframes = [conifers.copy(), noneedles.copy()]
     for _s in range(len(spectra_sets)):
@@ -211,7 +212,7 @@ def main():
     aggregated_df_export.to_csv(output_df_set_files[0], index=False, sep=',')
     conifers_df_export.to_csv(output_df_set_files[1], index=False, sep=',')
     noneedles_df_export.to_csv(output_df_set_files[2], index=False, sep=',')
-
+    #FUNC#
     # Plot the difference between needles and noneedles in reflectance data
     figure_base_dir = os.path.join(args.output_directory, 'figures')
     subprocess.call('mkdir ' + figure_base_dir, shell=True)
@@ -238,7 +239,7 @@ def main():
 
     plt.savefig(os.path.join(figure_base_dir, 'class_spectra.png'), **figure_export_settings)
     del fig
-
+    #FUNC#
     # Run through and generate the PLSR settings files, and call the PLSR code
     starting_dir = os.getcwd()
     for output_df_set in output_df_set_files:

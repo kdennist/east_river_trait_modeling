@@ -138,7 +138,7 @@ agg_lma = agg_lma[['SampleSiteCode', 'LMA_gm2', 'LWA_gm2', 'LWC_%']]
 
 all_lma = pd.concat([agg_lma, lma_site], axis=0, join='inner')
 
-site_trait_data = sites[['SampleSiteID', 'SampleSiteCode', 'Site_Veg', 'Needles']]
+site_trait_data = sites[['SampleSiteID', 'SampleSiteCode', 'Site_Veg', 'Needles', 'Genus']]
 cn_merging = cn[['SampleSiteCode', 'd15N', 'd13C', 'N_weight_percent', 'C_weight_percent']]
 cn_merging['CN'] = ((cn_merging['C_weight_percent'] / 100) / 12.0107)/((cn_merging['N_weight_percent'] / 100) / 14.0067)
 
