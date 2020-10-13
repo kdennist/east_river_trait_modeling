@@ -86,9 +86,9 @@ def main():
     NDVImask = NDVI < args.ndvi_min
     extract = extract.drop(extract[NDVImask].index)
 
-    CNwillows = CN.loc[CN['Site_Veg'] == 'wolfii']
+    CNwillows = CN.loc[(CN['Needles'] != True) & (CN['Genus'] == 'Salix')]
     CNconifer = CN.loc[(CN['Needles'] == True)]
-    CNbroadleaf = CN.loc[(CN['Needles'] != True) & (CN['Site_Veg'] == 'boothii')]
+
 
     np.random.seed(6)
 
@@ -143,7 +143,7 @@ def main():
     conifer_spectra = np.array(conifers[np.array(headerSpec)[all_band_indices]])
     conifer_spectra[:, bad_bands] = np.nan
 
-    noneedles_spectra = np.array(noneedles[np.array(headerSpec)[all_band_indices]])
+    noneedles_spectra = np.array(willows[np.array(headerSpec)[all_band_indices]])
     noneedles_spectra[:, bad_bands] = np.nan
 
     spectra_sets = [conifer_spectra, noneedles_spectra]
@@ -189,7 +189,7 @@ def main():
             spectra_sets[_s] = spectra
     #FUNC#
     ############### Rebuild dataframes for export  ##############
-    export_dataframes = [conifers.copy(), noneedles.copy()]
+    export_dataframes = [conifers.copy(), willows.copy()]
     for _s in range(len(spectra_sets)):
         for b in range(spectra_sets[_s].shape[1] + 1, 427):
             export_dataframes[_s] = export_dataframes[_s].drop('refl_B_{}'.format(b), axis=1)
