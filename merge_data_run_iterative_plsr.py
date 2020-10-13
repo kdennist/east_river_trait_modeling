@@ -86,33 +86,33 @@ def main():
     NDVImask = NDVI < args.ndvi_min
     extract = extract.drop(extract[NDVImask].index)
 
-    CNmeadows = CN.loc[CN['Site_Veg'] == 'Meadow']
-    CNconifer = CN.loc[CN['Needles'] == True]
-    CNbroadleaf = CN.loc[(CN['Needles'] != True) & (CN['Site_Veg'] != 'Meadow')]
+    CNwillows = CN.loc[CN['Site_Veg'] == 'wolfii']
+    CNconifer = CN.loc[(CN['Needles'] == True)]
+    CNbroadleaf = CN.loc[(CN['Needles'] != True) & (CN['Site_Veg'] == 'boothii')]
 
     np.random.seed(6)
 
     fraction_sets = [1./float(args.n_test_folds) for i in range(args.n_test_folds)]
 
     CalValM = np.random.choice(list(range(args.n_test_folds)),
-                               size=(CNmeadows.shape[0],), p=fraction_sets)
+                               size=(CNwillows.shape[0],), p=fraction_sets)
     CalValC = np.random.choice(list(range(args.n_test_folds)),
                                size=(CNconifer.shape[0],), p=fraction_sets)
     CalValB = np.random.choice(list(range(args.n_test_folds)),
                                size=(CNbroadleaf.shape[0],), p=fraction_sets)
 
-    CNmeadows['CalVal'] = CalValM
+    CNwillows['CalVal'] = CalValM
     CNconifer['CalVal'] = CalValC
     CNbroadleaf['CalVal'] = CalValB
 
     # Merging chem data with the correct extraction data based on the
     conifers = pd.merge(CNconifer, extract, how='inner', right_on=['ID'], left_on=['SampleSiteID'])
-    meadows = pd.merge(CNmeadows, extract, how='inner', right_on=['ID'], left_on=['SampleSiteID'])
+    willows = pd.merge(CNwillows, extract, how='inner', right_on=['ID'], left_on=['SampleSiteID'])
     broadleaf = pd.merge(CNbroadleaf, extract, how='inner',
                          right_on=['ID'], left_on=['SampleSiteID'])
 
     # Concatenating data for different subset exports
-    noneedles = meadows.append(broadleaf)
+    noneedles = willows.append(broadleaf)
 
     # first column of reflectance data
     rfdat = list(extract).index(settings_file.get_setting('band preface') + '1')

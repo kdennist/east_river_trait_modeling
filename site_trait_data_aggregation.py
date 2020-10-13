@@ -143,7 +143,8 @@ cn_merging = cn[['SampleSiteCode', 'd15N', 'd13C', 'N_weight_percent', 'C_weight
 cn_merging['CN'] = ((cn_merging['C_weight_percent'] / 100) / 12.0107)/((cn_merging['N_weight_percent'] / 100) / 14.0067)
 
 ms['Element'] = ms['Element'].str.slice(2, 4)
-ms['Calc Value (mg/g)'] = ms['Calc Value (mg/g)']
+ms['Calc Value (mg/g)'] = ms['Calc Value (mg/g)'].replace({0:np.nan, 0:np.nan})
+print(ms[ms['Calc Value (mg/g)'] <= 0]['Calc Value (mg/g)'])
 icp_merging = (ms.loc[ms['SampleID'].str.contains('-FO', na=False)])
 icp_merging = icp_merging[['Element', 'SampleSiteCode', 'Calc Value (mg/g)']]
 
@@ -154,6 +155,7 @@ print(icp_merging)
 site_trait_data = pd.merge(site_trait_data, all_lma, on='SampleSiteCode', how='left')
 site_trait_data = pd.merge(site_trait_data, cn_merging, on='SampleSiteCode', how='left')
 site_trait_data = pd.merge(site_trait_data, icp_merging, on='SampleSiteCode', how='left')
+
 
 # export dataset
 site_trait_data.to_csv('data/site_trait_data.csv', index=False)
