@@ -10,42 +10,115 @@ import matplotlib.pyplot as plt
 import os
 import warnings
 warnings.filterwarnings('ignore')
+parser = argparse.ArgumentParser('Run specific east-river trait submodels')
+parser.add_argument('output_directory', type=str)
+parser.add_argument('base_settings_file', type=str)
+parser.add_argument('-wavelength_file', default='data/neon_wavelengths.txt')
+parser.add_argument('-shade_type', type=str,
+                    choices=['dsm', 'tch', 'both', 'none'], default=None)
+parser.add_argument('-chem_file', default='data/site_trait_data.csv')
+parser.add_argument('-spectra_file', default='data/20200214_CRBU2018_AOP_Crowns_extraction.csv')
+parser.add_argument('-bn', '--brightness_normalize', type=str, default='True')
+parser.add_argument('-spectral_smoothing',
+                    choices=['sg', 'none', '2band', '3band'], type=str, default='none')
+parser.add_argument('-n_test_folds', default=10, type=int)
+parser.add_argument('-n_folds_to_run', default=10, type=int)
 
+parser.add_argument('-ndvi_min', default=0.5, type=float)
+
+parser.add_argument('-plsr_ensemble_code_dir',
+                    default='/Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling', type=str)
+
+args = parser.parse_args()
+if args.brightness_normalize.lower() == 'true':
+    args.brightness_normalize = True
+else:
+    args.brightness_normalize = False
+
+assert args.n_folds_to_run <= args.n_test_folds, 'n_folds_to_run <= n_test_folds'
+
+# assert os.path.isdir(args.output_directory) is False, 'output directory already exists'
+subprocess.call('mkdir ' + os.path.join(args.output_directory), shell=True)
+
+logging.basicConfig(filename=os.path.join(args.output_directory, 'log_file.txt'), level='INFO')
+
+sys.path.append(args.plsr_ensemble_code_dir)
 
 def main():
-    parser = argparse.ArgumentParser('Run specific east-river trait submodels')
-    parser.add_argument('output_directory', type=str)
-    parser.add_argument('base_settings_file', type=str)
-    parser.add_argument('-wavelength_file', default='data/neon_wavelengths.txt')
-    parser.add_argument('-shade_type', type=str,
-                        choices=['dsm', 'tch', 'both', 'none'], default=None)
-    parser.add_argument('-chem_file', default='data/site_trait_data.csv')
-    parser.add_argument('-spectra_file', default='data/20200214_CRBU2018_AOP_Crowns_extraction.csv')
-    parser.add_argument('-bn', '--brightness_normalize', type=str, default='True')
-    parser.add_argument('-spectral_smoothing',
-                        choices=['sg', 'none', '2band', '3band'], type=str, default='none')
-    parser.add_argument('-n_test_folds', default=10, type=int)
-    parser.add_argument('-n_folds_to_run', default=10, type=int)
+    extract, headerSpec, headerCN, CN = shaded_pixels()
+    noneedles, conifers = fold_params(extract, CN)
 
-    parser.add_argument('-ndvi_min', default=0.5, type=float)
+    spectra_sets, color_sets, good_band_ranges, wv, \
+    settings_file = reflectance_data(extract, headerSpec, noneedles, conifers)
 
-    parser.add_argument('-plsr_ensemble_code_dir',
-                        default='/Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling', type=str)
+    spectra_sets, bad_bands, wv = spectral_smoothing(spectra_sets, good_band_ranges, wv)
+    output_df_set_files = df_exports(conifers, noneedles, spectra_sets)
+    plot_reflectance_data(spectra_sets, wv, color_sets)
+    PLSR_call(output_df_set_files, bad_bands, settings_file)
 
-    args = parser.parse_args()
-    if args.brightness_normalize.lower() == 'true':
-        args.brightness_normalize = True
-    else:
-        args.brightness_normalize = False
 
-    assert args.n_folds_to_run <= args.n_test_folds, 'n_folds_to_run <= n_test_folds'
+def shaded_pixels():
+    # For jupyter notebooks
+    CN = pd.read_csv(args.chem_file)
+    extract = pd.read_csv(args.spectra_file)
 
-    #assert os.path.isdir(args.output_directory) is False, 'output directory already exists'
-    subprocess.call('mkdir ' + os.path.join(args.output_directory), shell=True)
+    # saving column names
+    headerCN = list(CN)
+    headerSpec = list(extract)  # Reflectance bands start at 18 (17 in zero base)
+    # logging.info(headerSpec)
+    # removing shaded pixels
+    if args.shade_type == 'dsm':
+        extract = extract.loc[extract['ered_B_1'] == 1]
+    elif args.shade_type == 'tch':
+        extract = extract.loc[extract['_tch_B_1'] == 1]
+    elif args.shade_type == 'both':
+        extract = extract.loc[(extract['_tch_B_1'] == 1) & (extract['ered_B_1'] == 1)]
+    elif args.shade_type == 'none':
+        extract = extract.loc[extract['_tch_B_1'] != -9999]
 
-    logging.basicConfig(filename=os.path.join(args.output_directory, 'log_file.txt'), level='INFO')
+    return extract, headerSpec, headerCN, CN
 
-    sys.path.append(args.plsr_ensemble_code_dir)
+def fold_params(extract, CN):
+    # calculating NDVI using bands 54 and 96 for non-meadow sites
+    NDVI = (np.array(extract["refl_B_96"])-np.array(extract["refl_B_54"])) / \
+        (np.array(extract["refl_B_96"])+np.array(extract["refl_B_54"]))
+    NDVImask = NDVI < args.ndvi_min
+    extract = extract.drop(extract[NDVImask].index)
+
+    CNwillows = CN.loc[(CN['Site_Veg'] == 'wolfii') | (CN['Site_Veg'] == 'boothii') |
+                       (CN['Site_Veg'] == 'brachy') | (CN['Site_Veg'] == 'planifolia') |
+                       (CN['Site_Veg'] == 'glauca') | (CN['Site_Veg'] == 'drumm') |
+                       (CN['Site_Veg'] == 'Willow') | (CN['Site_Veg'] == 'geyer')]
+    CNconifer = CN.loc[(CN['Needles'] == True)]
+    CNbroadleaf = CN.loc[(CN['Site_Veg'] == 'Bog Birch')]
+
+
+    np.random.seed(6)
+
+    fraction_sets = [1./float(args.n_test_folds) for i in range(args.n_test_folds)]
+
+    CalValM = np.random.choice(list(range(args.n_test_folds)),
+                               size=(CNwillows.shape[0],), p=fraction_sets)
+    CalValC = np.random.choice(list(range(args.n_test_folds)),
+                               size=(CNconifer.shape[0],), p=fraction_sets)
+    CalValB = np.random.choice(list(range(args.n_test_folds)),
+                               size=(CNbroadleaf.shape[0],), p=fraction_sets)
+
+    CNwillows['CalVal'] = CalValM
+    CNconifer['CalVal'] = CalValC
+    CNbroadleaf['CalVal'] = CalValB
+
+    # Merging chem data with the correct extraction data based on the
+    conifers = pd.merge(CNconifer, extract, how='inner', right_on=['ID'], left_on=['SampleSiteID'])
+    willows = pd.merge(CNwillows, extract, how='inner', right_on=['ID'], left_on=['SampleSiteID'])
+    broadleaf = pd.merge(CNbroadleaf, extract, how='inner', right_on=['ID'], left_on=['SampleSiteID'])
+
+    # Concatenating data for different subset exports
+    noneedles = willows.append(broadleaf)
+
+    return noneedles, conifers
+
+def reflectance_data(extract, headerSpec, noneedles, conifers):
     # from east_river_trait_modeling \
     import read_settings_file
     settings_file = read_settings_file.settings(args.base_settings_file)
@@ -61,60 +134,7 @@ def main():
     plt.rcParams['axes.axisbelow'] = True
     plt.rcParams['axes.labelpad'] = 6
 
-    # For jupyter notebooks
-    CN = pd.read_csv(args.chem_file)
-    extract = pd.read_csv(args.spectra_file)
 
-    # saving column names
-    headerCN = list(CN)
-    headerSpec = list(extract)  # Reflectance bands start at 18 (17 in zero base)
-    # logging.info(headerSpec)
-
-    # removing shaded pixels
-    if args.shade_type == 'dsm':
-        extract = extract.loc[extract['ered_B_1'] == 1]
-    elif args.shade_type == 'tch':
-        extract = extract.loc[extract['_tch_B_1'] == 1]
-    elif args.shade_type == 'both':
-        extract = extract.loc[(extract['_tch_B_1'] == 1) & (extract['ered_B_1'] == 1)]
-    elif args.shade_type == 'none':
-        extract = extract.loc[extract['_tch_B_1'] != -9999]
-
-    # calculating NDVI using bands 54 and 96 for non-meadow sites
-    NDVI = (np.array(extract["refl_B_96"])-np.array(extract["refl_B_54"])) / \
-        (np.array(extract["refl_B_96"])+np.array(extract["refl_B_54"]))
-    NDVImask = NDVI < args.ndvi_min
-    extract = extract.drop(extract[NDVImask].index)
-
-    CNwillows = CN.loc[(CN['Needles'] != True) & (CN['Genus'] == 'Salix')]
-    CNconifer = CN.loc[(CN['Needles'] == True)]
-
-
-    np.random.seed(6)
-
-    fraction_sets = [1./float(args.n_test_folds) for i in range(args.n_test_folds)]
-
-    CalValM = np.random.choice(list(range(args.n_test_folds)),
-                               size=(CNwillows.shape[0],), p=fraction_sets)
-    CalValC = np.random.choice(list(range(args.n_test_folds)),
-                               size=(CNconifer.shape[0],), p=fraction_sets)
-    # CalValB = np.random.choice(list(range(args.n_test_folds)),
-    #                            size=(CNbroadleaf.shape[0],), p=fraction_sets)
-
-    CNwillows['CalVal'] = CalValM
-    CNconifer['CalVal'] = CalValC
-    # CNbroadleaf['CalVal'] = CalValB
-
-    # Merging chem data with the correct extraction data based on the
-    conifers = pd.merge(CNconifer, extract, how='inner', right_on=['ID'], left_on=['SampleSiteID'])
-    willows = pd.merge(CNwillows, extract, how='inner', right_on=['ID'], left_on=['SampleSiteID'])
-    # broadleaf = pd.merge(CNbroadleaf, extract, how='inner',
-    #                      right_on=['ID'], left_on=['SampleSiteID'])
-
-    # Concatenating data for different subset exports
-    # noneedles = willows.append(broadleaf)
-
-    #FUNC#
     # first column of reflectance data
     rfdat = list(extract).index(settings_file.get_setting('band preface') + '1')
 
@@ -143,12 +163,16 @@ def main():
     conifer_spectra = np.array(conifers[np.array(headerSpec)[all_band_indices]])
     conifer_spectra[:, bad_bands] = np.nan
 
-    noneedles_spectra = np.array(willows[np.array(headerSpec)[all_band_indices]])
+    noneedles_spectra = np.array(noneedles[np.array(headerSpec)[all_band_indices]])
     noneedles_spectra[:, bad_bands] = np.nan
+
 
     spectra_sets = [conifer_spectra, noneedles_spectra]
     color_sets = ['royalblue', 'darkorange']
-    #FUNC#
+
+    return spectra_sets, color_sets, good_band_ranges, wv, settings_file
+
+def spectral_smoothing(spectra_sets, good_band_ranges, wv):
     #####   Spectral smoothing #####
     if (args.spectral_smoothing == '2band' or args.spectral_smoothing == '3band'):
         average_interval = 2
@@ -187,9 +211,13 @@ def main():
             spectra = spectra_sets[_s]
             spectra = spectra / np.sqrt(np.nanmean(np.power(spectra, 2), axis=1))[:, np.newaxis]
             spectra_sets[_s] = spectra
-    #FUNC#
+
+    return spectra_sets, bad_bands, wv
+
+def df_exports(conifers, noneedles, spectra_sets):
     ############### Rebuild dataframes for export  ##############
-    export_dataframes = [conifers.copy(), willows.copy()]
+
+    export_dataframes = [conifers.copy(),noneedles.copy()]
     for _s in range(len(spectra_sets)):
         for b in range(spectra_sets[_s].shape[1] + 1, 427):
             export_dataframes[_s] = export_dataframes[_s].drop('refl_B_{}'.format(b), axis=1)
@@ -212,7 +240,10 @@ def main():
     aggregated_df_export.to_csv(output_df_set_files[0], index=False, sep=',')
     conifers_df_export.to_csv(output_df_set_files[1], index=False, sep=',')
     noneedles_df_export.to_csv(output_df_set_files[2], index=False, sep=',')
-    #FUNC#
+
+    return output_df_set_files
+
+def plot_reflectance_data(spectra_sets, wv, color_sets):
     # Plot the difference between needles and noneedles in reflectance data
     figure_base_dir = os.path.join(args.output_directory, 'figures')
     subprocess.call('mkdir ' + figure_base_dir, shell=True)
@@ -239,7 +270,8 @@ def main():
 
     plt.savefig(os.path.join(figure_base_dir, 'class_spectra.png'), **figure_export_settings)
     del fig
-    #FUNC#
+
+def PLSR_call(output_df_set_files, bad_bands, settings_file):
     # Run through and generate the PLSR settings files, and call the PLSR code
     starting_dir = os.getcwd()
     for output_df_set in output_df_set_files:
