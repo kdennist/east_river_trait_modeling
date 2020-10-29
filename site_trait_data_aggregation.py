@@ -14,12 +14,12 @@ lma_site = pd.read_csv('data/doi_lma/lma_site_samples.csv', na_values='NA')
 species = pd.read_csv('data/doi_sites/species_list.csv')
 cn = pd.read_csv('data/doi_cn/CN_Results_Foliar.csv')
 ms = pd.read_csv('../icpms/processed_data/icp_ms_processed.csv')
-# genus = pd.read_csv('data/doi_cn/foliar_sample_igsn_metadata.csv')
-# genus.drop(columns=['Site Identifier','Sample Description','Material','Collection method description', 'CoverCode', 'Sample Name',
-#                             'Longitude','Latitude','Elevation Unit','Elevation start','Field name (informal classification)',
-#                             'Location Description','Collection date','Navigation Type','EPSG','GeolocationInstrument',
-#                             'Site_Veg','Needles','Family','Species','Country:','State/Province:','County:','City:',
-#                             'Collector/Chief Scientist:','Current Archive:','Current Archive Contact Details:'], inplace=True)
+genus = pd.read_csv('data/doi_cn/foliar_sample_igsn_metadata.csv')
+genus.drop(columns=['Site Identifier','Sample Description','Material','Collection method description', 'CoverCode', 'Sample Name',
+                            'Longitude','Latitude','Elevation Unit','Elevation start','Field name (informal classification)',
+                            'Location Description','Collection date','Navigation Type','EPSG','GeolocationInstrument',
+                            'Site_Veg','Needles','Family','Species','Country:','State/Province:','County:','City:',
+                            'Collector/Chief Scientist:','Current Archive:','Current Archive Contact Details:'], inplace=True)
 
 # Use Bradley and T403 interchangeably
 lma_meadow['SamplingArea'].loc[lma_meadow['SamplingArea'] == 'T403'] = "BD"
@@ -144,20 +144,24 @@ agg_lma = agg_lma[['SampleSiteCode', 'LMA_gm2', 'LWA_gm2', 'LWC_%']]
 
 all_lma = pd.concat([agg_lma, lma_site], axis=0, join='inner')
 
-site_trait_data = sites[['SampleSiteID', 'SampleSiteCode', 'Site_Veg', 'Needles']]
+site_trait_merge = pd.merge(sites, genus, how='left', left_on='Foliar_IGSN', right_on='IGSN')
+site_trait_merge.drop(columns=['IGSN'], inplace=True)
+
+
+site_trait_data = site_trait_merge[['SampleSiteID', 'SampleSiteCode','Site_Veg', 'Genus', 'Needles']]
 
 cn_merging = cn[['SampleSiteCode', 'd15N', 'd13C', 'N_weight_percent', 'C_weight_percent']]
 cn_merging['CN'] = ((cn_merging['C_weight_percent'] / 100) / 12.0107)/((cn_merging['N_weight_percent'] / 100) / 14.0067)
 
 ms['Element'] = ms['Element'].str.slice(2, 4)
 ms['Calc Value (mg/g)'] = ms['Calc Value (mg/g)'].replace({0:np.nan, 0:np.nan})
-print(ms['Calc Value (mg/g)'])
-
+# print(ms[ms['Calc Value (mg/g)'] <= 0]['Calc Value (mg/g)'])
 icp_merging = (ms.loc[ms['SampleID'].str.contains('-FO', na=False)])
 icp_merging = icp_merging[['Element', 'SampleSiteCode', 'Calc Value (mg/g)']]
 
 icp_merging = pd.pivot_table(icp_merging, index=['SampleSiteCode'], columns='Element', values='Calc Value (mg/g)')
 
+print(site_trait_data)
 
 site_trait_data = pd.merge(site_trait_data, all_lma, on='SampleSiteCode', how='left')
 site_trait_data = pd.merge(site_trait_data, cn_merging, on='SampleSiteCode', how='left')

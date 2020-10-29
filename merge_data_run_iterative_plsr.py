@@ -85,12 +85,9 @@ def fold_params(extract, CN):
     NDVImask = NDVI < args.ndvi_min
     extract = extract.drop(extract[NDVImask].index)
 
-    CNwillows = CN.loc[(CN['Site_Veg'] == 'wolfii') | (CN['Site_Veg'] == 'boothii') |
-                       (CN['Site_Veg'] == 'brachy') | (CN['Site_Veg'] == 'planifolia') |
-                       (CN['Site_Veg'] == 'glauca') | (CN['Site_Veg'] == 'drumm') |
-                       (CN['Site_Veg'] == 'Willow') | (CN['Site_Veg'] == 'geyer')]
-    CNconifer = CN.loc[(CN['Needles'] == True)]
-    CNbroadleaf = CN.loc[(CN['Site_Veg'] == 'Bog Birch')]
+    CNwillows = CN.loc[(CN['Genus'] == 'Salix')]
+    CNconifer = CN.loc[(CN['Genus'] != 'Salix')]
+    # CNbroadleaf = CN.loc[(CN['Site_Veg'] == 'Bog Birch')]
 
 
     np.random.seed(6)
@@ -101,20 +98,20 @@ def fold_params(extract, CN):
                                size=(CNwillows.shape[0],), p=fraction_sets)
     CalValC = np.random.choice(list(range(args.n_test_folds)),
                                size=(CNconifer.shape[0],), p=fraction_sets)
-    CalValB = np.random.choice(list(range(args.n_test_folds)),
-                               size=(CNbroadleaf.shape[0],), p=fraction_sets)
+    # CalValB = np.random.choice(list(range(args.n_test_folds)),
+    #                            size=(CNbroadleaf.shape[0],), p=fraction_sets)
 
     CNwillows['CalVal'] = CalValM
     CNconifer['CalVal'] = CalValC
-    CNbroadleaf['CalVal'] = CalValB
+    # CNbroadleaf['CalVal'] = CalValB
 
     # Merging chem data with the correct extraction data based on the
     conifers = pd.merge(CNconifer, extract, how='inner', right_on=['ID'], left_on=['SampleSiteID'])
-    willows = pd.merge(CNwillows, extract, how='inner', right_on=['ID'], left_on=['SampleSiteID'])
-    broadleaf = pd.merge(CNbroadleaf, extract, how='inner', right_on=['ID'], left_on=['SampleSiteID'])
+    noneedles = pd.merge(CNwillows, extract, how='inner', right_on=['ID'], left_on=['SampleSiteID'])
+    # broadleaf = pd.merge(CNbroadleaf, extract, how='inner', right_on=['ID'], left_on=['SampleSiteID'])
 
     # Concatenating data for different subset exports
-    noneedles = willows.append(broadleaf)
+    # noneedles = willows.append(broadleaf)
 
     return noneedles, conifers
 

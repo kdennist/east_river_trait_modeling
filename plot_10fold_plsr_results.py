@@ -32,11 +32,11 @@ def main():
 
     args = parser.parse_args()
 
-    chems = ['1C', 'Co', 'Cr', 'Cu', 'Mo', 'Ni', 'Sr', 'Zn']
+    chems = ['1C', 'Co', 'Cr', 'Cu', 'Ni', 'As', 'Sr', 'Zn']
     chems_names = ['Foliar Cd (ppm)', 'Foliar Co (ppm)', 'Foliar Cr (ppm)', 'Foliar Cu (ppm)',
-                   'Foliar Mo (ppm)', 'Foliar Ni (ppm)', 'Foliar Sr (ppm)', 'Foliar Zn (ppm)']
-
-    leaftype = ['needles', 'noneedles']
+                   'Foliar Ni (ppm)', 'Foliar As (ppm)', 'Foliar Sr (ppm)', 'Foliar Zn (ppm)']
+    # 'needles',
+    leaftype = ['noneedles']
     plotting_colnames = ['SiteID', 'measured', 'modeled', 'calval']
 
     fig = plt.figure(figsize=(24, 13))  # , constrained_layout=True)
