@@ -1,0 +1,1 @@
+Chem, Val-Slope, Val-Intercept, Val-R2, Val-RMSE, Val-%RMSE, Cal-Slope, Cal-Intercept, Cal-R2, Cal-RMSE, Cal-%RMSE

@@ -1,0 +1,180 @@
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/chem/fold_0/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/chem/fold_1/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/chem/fold_2/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/chem/fold_3/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/chem/fold_4/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/chem/fold_5/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/chem/fold_6/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/chem/fold_7/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/chem/fold_8/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/chem/fold_9/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/needles/fold_0/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/needles/fold_1/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/needles/fold_2/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/needles/fold_3/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/needles/fold_4/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/needles/fold_5/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/needles/fold_6/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/needles/fold_7/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/needles/fold_8/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/needles/fold_9/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/noneedles/fold_0/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/noneedles/fold_1/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/noneedles/fold_2/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/noneedles/fold_3/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/noneedles/fold_4/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/noneedles/fold_5/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/noneedles/fold_6/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/noneedles/fold_7/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/noneedles/fold_8/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/noneedles/fold_9/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/chem/fold_0/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/chem/fold_1/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/chem/fold_2/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/chem/fold_3/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/chem/fold_4/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/chem/fold_5/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/chem/fold_6/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/chem/fold_7/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/chem/fold_8/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/chem/fold_9/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/needles/fold_0/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/needles/fold_1/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/needles/fold_2/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/needles/fold_3/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/needles/fold_4/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/needles/fold_5/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/needles/fold_6/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/needles/fold_7/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/needles/fold_8/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/needles/fold_9/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/noneedles/fold_0/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/noneedles/fold_1/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/noneedles/fold_2/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/noneedles/fold_3/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/noneedles/fold_4/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/noneedles/fold_5/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/noneedles/fold_6/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/noneedles/fold_7/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/noneedles/fold_8/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/noneedles/fold_9/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/chem/fold_0/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/chem/fold_1/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/chem/fold_2/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/chem/fold_3/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/chem/fold_4/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/chem/fold_5/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/chem/fold_6/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/chem/fold_7/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/chem/fold_8/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/chem/fold_9/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/needles/fold_0/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/needles/fold_1/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/needles/fold_2/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/needles/fold_3/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/needles/fold_4/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/needles/fold_5/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/needles/fold_6/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/needles/fold_7/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/needles/fold_8/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/needles/fold_9/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/noneedles/fold_0/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/noneedles/fold_1/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/noneedles/fold_2/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/noneedles/fold_3/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/noneedles/fold_4/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/noneedles/fold_5/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/noneedles/fold_6/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/noneedles/fold_7/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/noneedles/fold_8/settings_file.txt&
+INFO:root:calling:
+python /Users/katiedenniston/Desktop/USC/er18_metals_analysis/crown_based_ensembling/../crown_based_ensembling/ensemble_plsr.py /Users/katiedenniston/Desktop/USC/er18_metals_analysis/east_river_trait_modeling/metals_v16/noneedles/fold_9/settings_file.txt&
