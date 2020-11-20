@@ -144,7 +144,7 @@ def plot_avg_quantile(spectra, longdf, cover_types, genus_types, site_codes, wv,
     g_types = genus_types.unique()
     c_types = cover_types.unique()
 
-    color_sets = ['navy', 'purple', 'forestgreen', 'royalblue', 'gray', 'darkorange', 'black', 'brown', 'tan']
+    color_sets = ['navy', 'purple', 'forestgreen', 'royalblue', 'gray', 'darkorange', 'tan']
 
     # Plot the difference between needles and noneedles in reflectance data
 
@@ -194,9 +194,9 @@ def plot_avg_quantile(spectra, longdf, cover_types, genus_types, site_codes, wv,
                     scale_factor = 100.
 
                 plt.plot(wv, np.nanmean(c_spectra, axis=0) / scale_factor, c=color_sets[i], linewidth=2)
-                plt.fill_between(wv, np.nanmean(c_spectra, axis=0) / scale_factor - np.nanstd(c_spectra, axis=0) / scale_factor,
-                                 np.nanmean(c_spectra, axis=0) / scale_factor + np.nanstd(c_spectra, axis=0) / scale_factor, alpha=.15,
-                                 facecolor=color_sets[i])
+                # plt.fill_between(wv, np.nanmean(c_spectra, axis=0) / scale_factor - np.nanstd(c_spectra, axis=0) / scale_factor,
+                #                  np.nanmean(c_spectra, axis=0) / scale_factor + np.nanstd(c_spectra, axis=0) / scale_factor, alpha=.15,
+                #                  facecolor=color_sets[i])
 
             plt.legend(quantile_intervals, prop={'size': 20})
             plt.ylabel('Reflectance (%)')
