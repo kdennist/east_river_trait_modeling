@@ -284,7 +284,7 @@ def PLSR_call(output_df_set_files, bad_bands, settings_file):
                 bad_bands_str += str(n+1) + ','
             settings_file.settings_obj['Spectral']['bad bands(1-based)'] = bad_bands_str[:-1]
 
-            bn_norm_str = 'False'
+            bn_norm_str = 'True'
             settings_file.settings_obj['Spectral']['brightness normalize'] = bn_norm_str
 
             settings_file.settings_obj['Data']['csv file'] = os.path.join(

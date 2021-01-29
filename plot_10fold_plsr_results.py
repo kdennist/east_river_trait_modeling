@@ -33,8 +33,8 @@ def main():
     args = parser.parse_args()
 
     chems = ['1C', 'Co', 'Cr', 'Cu', 'As', 'Ni', 'Sr', 'Zn']
-    chems_names = ['Foliar Cd (ppm)', 'Foliar Co (ppm)', 'Foliar Cr (ppm)', 'Foliar Cu (ppm)',
-                   'Foliar As (ppm)', 'Foliar Ni (ppm)', 'Foliar Sr (ppm)', 'Foliar Zn (ppm)']
+    chems_names = ['Foliar Cd (ppb)', 'Foliar Co (ppb)', 'Foliar Cr (ppb)', 'Foliar Cu (ppb)',
+                   'Foliar As (ppb)', 'Foliar Ni (ppb)', 'Foliar Sr (ppb)', 'Foliar Zn (ppb)']
 
 
     leaftype = ['needles', 'noneedles']

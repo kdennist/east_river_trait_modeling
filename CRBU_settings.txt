@@ -36,5 +36,5 @@ find bad bands = False
 scale response = False
 scale features = False
 test set holdout fraction = 0 
-iteration holdout fraction = 0.35
+iteration holdout fraction = 0.30
 
